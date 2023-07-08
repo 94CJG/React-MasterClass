@@ -16,5 +16,5 @@ function App() {
       <Input />
     </Father>
   );
-
-export default App;
+};
+export default App
