@@ -1,11 +1,19 @@
 import styled, { keyframes } from 'styled-components';
- //에니메이션을 사용하기 위한 import 추가
+
+const Title = styled.h1`
+  color: ${(props) => props.theme.textColor};
+`;
 
 const Wrapper = styled.div`
   display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
-const rotatinAnimation = keyframes` //노말 CSS코드를 작성
+const rotatinAnimation = keyframes`
   0% {
     transform: rotate(0deg);
     border-radius: 0px;
@@ -16,8 +24,12 @@ const rotatinAnimation = keyframes` //노말 CSS코드를 작성
   }
   100% {
     transform: rotate(0deg);
-    border-radius: 0px;
+    border-radius: 0px;   
   }
+`;
+
+const Emoji = styled.span`
+  font-size: 36px;
 `;
 
 const Box = styled.div`
@@ -25,31 +37,25 @@ const Box = styled.div`
   width: 200px;
   background-color: tomato;
   animation: ${rotatinAnimation} 2s linear infinite;
-  //에니메이션을 사용 하는 방법 JavaScript string을 작성
   display: flex;
   justify-content: center;
   align-items: center;
-  span {
-    // 부모 컴포넌트 안에 있기 때문에 CSS 변경시 이렇게 작성 가능함.
-    font-size: 36px;
-    &:hover {
-      font-size: 40px;
-      // span:hover와 같은 의미 이다. &=sapn 이라는 의미.
-    }
-    &:active {
-      opacity: 0;
-    }
+  ${Emoji}:hover {
+    font-size: 98px;
   }
-  //결국 style를 꾸며줄 때 모든 게 다 component일 필요가 없다.
 `;
 
 function App() {
   return (
-    <Wrapper>
-      <Box>
-        <span>😍</span> {/**스타일 컴포넌트가 아니다. */}
-      </Box>
-    </Wrapper>
+    <div>
+      <Wrapper>
+        <Box>
+          <Title>Hello</Title>
+        </Box>
+        <Emoji>❤️</Emoji>
+      </Wrapper>
+    </div>
   );
 }
 export default App;
+//모든 색깔을 하나의 object 안에 넣어놨기 때문에 매우 유용하다.
